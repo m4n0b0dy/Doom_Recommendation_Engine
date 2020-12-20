@@ -1,5 +1,5 @@
 #es index name
-ES_INDEX_NAME = 'testing_index'
+ES_INDEX_NAME = 'verse_index'
 
 #es index body
 INDEX_BODY = {
@@ -17,13 +17,13 @@ INDEX_BODY = {
          "song":{
             "type":"text"
          },
-         "raw_verse":{
+         "verse":{
             "type":"text"
-         },
-         "verse_vector":{
-            "type":"dense_vector",
-            "dims":2
-         }
+         }#,
+         #"verse_vector":{
+            #"type":"dense_vector",
+            #"dims":2
+         #}
       }
    }
 }

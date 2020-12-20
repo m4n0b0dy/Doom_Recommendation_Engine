@@ -23,8 +23,8 @@ class Verse:
             'artist':artist,
             'album':album,
             'song':song,
-            'raw_verse':self.text,
-            'verse_vector':[0,0]
+            'verse':self.text#,
+            #'verse_vector':[0,0]
         }
         
     def clean_text(self):
