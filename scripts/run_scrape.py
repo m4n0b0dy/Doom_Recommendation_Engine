@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, '../tools/')
 from rap_scrpr import *
 import pandas as pd
 
