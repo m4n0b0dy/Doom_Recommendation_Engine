@@ -347,6 +347,10 @@ def main():
         data_collator=data_collator,
     )
 
+    #CHANGING BATCH SIZE HERE
+    trainer.train_batch_size=1
+    trainer.per_device_batch_size=1
+
     # Training
     if training_args.do_train:
         model_path = (
