@@ -1,0 +1,61 @@
+12/21/2020 05:17:25 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+12/21/2020 05:17:25 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(output_dir='../models/pre_trained/model/', overwrite_output_dir=False, do_train=True, do_eval=True, do_predict=False, model_parallel=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=8, per_device_eval_batch_size=8, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_steps=0, logging_dir='runs/Dec21_05-17-25_powerserver', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='../models/pre_trained/model/', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None, ignore_data_skip=False, fp16_backend='auto', sharded_ddp=False)
+Using custom data configuration default
+Reusing dataset text (/home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab)
+[INFO|configuration_utils.py:431] 2020-12-21 05:17:26,638 >> loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.637c6035640bacb831febcc2b7f7bee0a96f9b30c2d7e9ef84082d9f252f3170
+[INFO|configuration_utils.py:467] 2020-12-21 05:17:26,639 >> Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+[INFO|configuration_utils.py:431] 2020-12-21 05:17:26,888 >> loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.637c6035640bacb831febcc2b7f7bee0a96f9b30c2d7e9ef84082d9f252f3170
+[INFO|configuration_utils.py:467] 2020-12-21 05:17:26,889 >> Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+[INFO|tokenization_utils_base.py:1802] 2020-12-21 05:17:27,401 >> loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/nbdy/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+[INFO|tokenization_utils_base.py:1802] 2020-12-21 05:17:27,402 >> loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/nbdy/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+[INFO|modeling_utils.py:1024] 2020-12-21 05:17:27,697 >> loading weights file https://huggingface.co/bert-base-uncased/resolve/main/pytorch_model.bin from cache at /home/nbdy/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f
+[WARNING|modeling_utils.py:1132] 2020-12-21 05:17:34,321 >> Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias']
+- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+[INFO|modeling_utils.py:1149] 2020-12-21 05:17:34,322 >> All the weights of BertForMaskedLM were initialized from the model checkpoint at bert-base-uncased.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use BertForMaskedLM for predictions without further training.
+[WARNING|tokenization_utils_base.py:3233] 2020-12-21 05:17:37,260 >> Token indices sequence length is longer than the specified maximum sequence length for this model (44451 > 512). Running this sequence through the model will result in indexing errors
+Loading cached processed dataset at /home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab/cache-80dd69c00c6aeb7b.arrow
+  0%|                                                                                                                                                                              | 0/3 [00:00<?, ?ba/s]

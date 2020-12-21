@@ -37,7 +37,8 @@ class Verse:
     def ingest_to_es(self,conn,index):
         return conn.index(index=index, body=self.es_dict)
     
-def etl_artist(json_path, es_conn, es_index):
+    
+def load_artist(json_path, es_conn, es_index):
     t = time.time()
     with open(json_path) as f:
         data = json.load(f)
@@ -60,6 +61,33 @@ def etl_artist(json_path, es_conn, es_index):
                 cntr +=1
     print('Ingested',cntr,'songs for json file:',json_path,'in time:',time.time()-t)
 
+#not good to copy code but don't want to overwrite an etl function
+def verse_extract(json_path):
+    t = time.time()
+    with open(json_path) as f:
+        data = json.load(f)
+    parent_artist = json_path.replace('.json','').replace('../data/json_lyrics/','')
+    full_verse_list = []
+    for artist, albums in data.items():
+        if 'raw_song_' in artist:
+            text = albums
+            albums = {'unknown':{'unknown':text}}
+        for album, songs in albums.items():
+            for song,text in songs.items():
+                verse = Verse(raw_text=text,
+                            parent_artist=parent_artist,
+                            artist=artist,
+                            album=album,
+                            song=song)
+                verse.clean_text()
+                full_verse_list.append({'parent_artist':parent_artist,
+                                       'artist':artist,
+                                       'album':album,
+                                       'song':song,
+                                       'verse':verse.text})
+    print('Extracted',json_path,'in time:',time.time()-t)
+    return full_verse_list                
+    
 def ingest_multiple_json(json_paths,es_conn,es_index):
     pool = Pool(thread_count)
     pool.starmap(etl_artist, zip(json_paths, repeat(es_conn), repeat(es_index)))
