@@ -1,914 +1,0 @@
-12/21/2020 06:09:34 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
-12/21/2020 06:09:34 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(output_dir='../models/pre_trained/model/', overwrite_output_dir=False, do_train=True, do_eval=False, do_predict=False, model_parallel=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=8, per_device_eval_batch_size=8, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_steps=0, logging_dir='runs/Dec21_06-09-34_powerserver', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='../models/pre_trained/model/', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None, ignore_data_skip=False, fp16_backend='auto', sharded_ddp=False)
-Using custom data configuration default
-Reusing dataset text (/home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab)
-[INFO|configuration_utils.py:431] 2020-12-21 06:09:34,971 >> loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.637c6035640bacb831febcc2b7f7bee0a96f9b30c2d7e9ef84082d9f252f3170
-[INFO|configuration_utils.py:467] 2020-12-21 06:09:34,972 >> Model config BertConfig {
-  "architectures": [
-    "BertForMaskedLM"
-  ],
-  "attention_probs_dropout_prob": 0.1,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 512,
-  "model_type": "bert",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 0,
-  "position_embedding_type": "absolute",
-  "type_vocab_size": 2,
-  "vocab_size": 30522
-}
-
-[INFO|configuration_utils.py:431] 2020-12-21 06:09:35,232 >> loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.637c6035640bacb831febcc2b7f7bee0a96f9b30c2d7e9ef84082d9f252f3170
-[INFO|configuration_utils.py:467] 2020-12-21 06:09:35,233 >> Model config BertConfig {
-  "architectures": [
-    "BertForMaskedLM"
-  ],
-  "attention_probs_dropout_prob": 0.1,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 512,
-  "model_type": "bert",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 0,
-  "position_embedding_type": "absolute",
-  "type_vocab_size": 2,
-  "vocab_size": 30522
-}
-
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:09:35,751 >> loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/nbdy/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:09:35,752 >> loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/nbdy/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
-[INFO|modeling_utils.py:1024] 2020-12-21 06:09:36,034 >> loading weights file https://huggingface.co/bert-base-uncased/resolve/main/pytorch_model.bin from cache at /home/nbdy/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f
-[WARNING|modeling_utils.py:1132] 2020-12-21 06:09:42,653 >> Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias']
-- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-[INFO|modeling_utils.py:1149] 2020-12-21 06:09:42,653 >> All the weights of BertForMaskedLM were initialized from the model checkpoint at bert-base-uncased.
-If your task is similar to the task the model of the checkpoint was trained on, you can already use BertForMaskedLM for predictions without further training.
-[WARNING|tokenization_utils_base.py:3233] 2020-12-21 06:09:45,441 >> Token indices sequence length is longer than the specified maximum sequence length for this model (44451 > 512). Running this sequence through the model will result in indexing errors
-Loading cached processed dataset at /home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab/cache-80dd69c00c6aeb7b.arrow
-Loading cached processed dataset at /home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab/cache-ad8e0261094e7e17.arrow
-[INFO|trainer.py:388] 2020-12-21 06:09:45,523 >> The following columns in the training set don't have a corresponding argument in `BertForMaskedLM.forward` and have been ignored: special_tokens_mask.
-[INFO|trainer.py:703] 2020-12-21 06:09:45,528 >> ***** Running training *****
-[INFO|trainer.py:704] 2020-12-21 06:09:45,528 >>   Num examples = 132947
-[INFO|trainer.py:705] 2020-12-21 06:09:45,528 >>   Num Epochs = 3
-[INFO|trainer.py:706] 2020-12-21 06:09:45,528 >>   Instantaneous batch size per device = 8
-[INFO|trainer.py:707] 2020-12-21 06:09:45,528 >>   Total train batch size (w. parallel, distributed & accumulation) = 8
-[INFO|trainer.py:708] 2020-12-21 06:09:45,528 >>   Gradient Accumulation steps = 1
-[INFO|trainer.py:709] 2020-12-21 06:09:45,528 >>   Total optimization steps = 49857
-  0%|          | 0/49857 [00:00<?, ?it/s]Traceback (most recent call last):
-  File "run_mlm.py", line 390, in <module>
-    main()
-  File "run_mlm.py", line 360, in main
-    trainer.train(model_path=model_path)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 799, in train
-    tr_loss += self.training_step(model, inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 1139, in training_step
-    loss = self.compute_loss(model, inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 1163, in compute_loss
-    outputs = model(**inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 1185, in forward
-    return_dict=return_dict,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 872, in forward
-    return_dict=return_dict,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 507, in forward
-    output_attentions,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 447, in forward
-    self.feed_forward_chunk, self.chunk_size_feed_forward, self.seq_len_dim, attention_output
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/modeling_utils.py", line 1784, in apply_chunking_to_forward
-    return forward_fn(*input_tensors)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 453, in feed_forward_chunk
-    intermediate_output = self.intermediate(attention_output)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 381, in forward
-    hidden_states = self.intermediate_act_fn(hidden_states)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/functional.py", line 1383, in gelu
-    return torch._C._nn.gelu(input)
-RuntimeError: CUDA out of memory. Tried to allocate 48.00 MiB (GPU 0; 5.80 GiB total capacity; 4.85 GiB already allocated; 13.75 MiB free; 4.89 GiB reserved in total by PyTorch)
-  0%|          | 0/49857 [00:00<?, ?it/s]Traceback (most recent call last):
-  File "run_mlm.py", line 390, in <module>
-    main()
-  File "run_mlm.py", line 139, in main
-    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/hf_argparser.py", line 158, in parse_args_into_dataclasses
-    raise ValueError(f"Some specified arguments are not used by the HfArgumentParser: {remaining_args}")
-ValueError: Some specified arguments are not used by the HfArgumentParser: ['per_device_train_batch_size=1']
-12/21/2020 06:10:19 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
-12/21/2020 06:10:19 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(output_dir='../models/pre_trained/model/', overwrite_output_dir=False, do_train=True, do_eval=False, do_predict=False, model_parallel=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=8, per_device_eval_batch_size=8, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_steps=0, logging_dir='runs/Dec21_06-10-19_powerserver', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='../models/pre_trained/model/', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None, ignore_data_skip=False, fp16_backend='auto', sharded_ddp=False)
-Using custom data configuration default
-Reusing dataset text (/home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab)
-[INFO|configuration_utils.py:431] 2020-12-21 06:10:20,211 >> loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.637c6035640bacb831febcc2b7f7bee0a96f9b30c2d7e9ef84082d9f252f3170
-[INFO|configuration_utils.py:467] 2020-12-21 06:10:20,213 >> Model config BertConfig {
-  "architectures": [
-    "BertForMaskedLM"
-  ],
-  "attention_probs_dropout_prob": 0.1,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 512,
-  "model_type": "bert",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 0,
-  "position_embedding_type": "absolute",
-  "type_vocab_size": 2,
-  "vocab_size": 30522
-}
-
-[INFO|configuration_utils.py:431] 2020-12-21 06:10:20,469 >> loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.637c6035640bacb831febcc2b7f7bee0a96f9b30c2d7e9ef84082d9f252f3170
-[INFO|configuration_utils.py:467] 2020-12-21 06:10:20,470 >> Model config BertConfig {
-  "architectures": [
-    "BertForMaskedLM"
-  ],
-  "attention_probs_dropout_prob": 0.1,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 512,
-  "model_type": "bert",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 0,
-  "position_embedding_type": "absolute",
-  "type_vocab_size": 2,
-  "vocab_size": 30522
-}
-
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:10:20,993 >> loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/nbdy/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:10:20,993 >> loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/nbdy/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
-[INFO|modeling_utils.py:1024] 2020-12-21 06:10:21,272 >> loading weights file https://huggingface.co/bert-base-uncased/resolve/main/pytorch_model.bin from cache at /home/nbdy/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f
-[WARNING|modeling_utils.py:1132] 2020-12-21 06:10:27,886 >> Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias']
-- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-[INFO|modeling_utils.py:1149] 2020-12-21 06:10:27,886 >> All the weights of BertForMaskedLM were initialized from the model checkpoint at bert-base-uncased.
-If your task is similar to the task the model of the checkpoint was trained on, you can already use BertForMaskedLM for predictions without further training.
-[WARNING|tokenization_utils_base.py:3233] 2020-12-21 06:10:30,771 >> Token indices sequence length is longer than the specified maximum sequence length for this model (44451 > 512). Running this sequence through the model will result in indexing errors
-Loading cached processed dataset at /home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab/cache-80dd69c00c6aeb7b.arrow
-Loading cached processed dataset at /home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab/cache-ad8e0261094e7e17.arrow
-[INFO|trainer.py:388] 2020-12-21 06:10:30,864 >> The following columns in the training set don't have a corresponding argument in `BertForMaskedLM.forward` and have been ignored: special_tokens_mask.
-[INFO|trainer.py:703] 2020-12-21 06:10:30,870 >> ***** Running training *****
-[INFO|trainer.py:704] 2020-12-21 06:10:30,870 >>   Num examples = 132947
-[INFO|trainer.py:705] 2020-12-21 06:10:30,870 >>   Num Epochs = 3
-[INFO|trainer.py:706] 2020-12-21 06:10:30,870 >>   Instantaneous batch size per device = 8
-[INFO|trainer.py:707] 2020-12-21 06:10:30,870 >>   Total train batch size (w. parallel, distributed & accumulation) = 8
-[INFO|trainer.py:708] 2020-12-21 06:10:30,870 >>   Gradient Accumulation steps = 1
-[INFO|trainer.py:709] 2020-12-21 06:10:30,870 >>   Total optimization steps = 49857
-  0%|          | 0/49857 [00:00<?, ?it/s]Traceback (most recent call last):
-  File "run_mlm.py", line 390, in <module>
-    main()
-  File "run_mlm.py", line 360, in main
-    trainer.train(model_path=model_path)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 799, in train
-    tr_loss += self.training_step(model, inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 1139, in training_step
-    loss = self.compute_loss(model, inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 1163, in compute_loss
-    outputs = model(**inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 1185, in forward
-    return_dict=return_dict,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 872, in forward
-    return_dict=return_dict,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 507, in forward
-    output_attentions,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 447, in forward
-    self.feed_forward_chunk, self.chunk_size_feed_forward, self.seq_len_dim, attention_output
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/modeling_utils.py", line 1784, in apply_chunking_to_forward
-    return forward_fn(*input_tensors)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 453, in feed_forward_chunk
-    intermediate_output = self.intermediate(attention_output)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 381, in forward
-    hidden_states = self.intermediate_act_fn(hidden_states)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/functional.py", line 1383, in gelu
-    return torch._C._nn.gelu(input)
-RuntimeError: CUDA out of memory. Tried to allocate 48.00 MiB (GPU 0; 5.80 GiB total capacity; 4.85 GiB already allocated; 13.75 MiB free; 4.89 GiB reserved in total by PyTorch)
-  0%|          | 0/49857 [00:00<?, ?it/s]12/21/2020 06:11:02 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
-12/21/2020 06:11:02 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(output_dir='../models/pre_trained/model/', overwrite_output_dir=False, do_train=True, do_eval=False, do_predict=False, model_parallel=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=8, per_device_eval_batch_size=8, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_steps=0, logging_dir='runs/Dec21_06-11-02_powerserver', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='../models/pre_trained/model/', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None, ignore_data_skip=False, fp16_backend='auto', sharded_ddp=False)
-Using custom data configuration default
-Reusing dataset text (/home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab)
-[INFO|configuration_utils.py:431] 2020-12-21 06:11:03,457 >> loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.637c6035640bacb831febcc2b7f7bee0a96f9b30c2d7e9ef84082d9f252f3170
-[INFO|configuration_utils.py:467] 2020-12-21 06:11:03,458 >> Model config BertConfig {
-  "architectures": [
-    "BertForMaskedLM"
-  ],
-  "attention_probs_dropout_prob": 0.1,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 512,
-  "model_type": "bert",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 0,
-  "position_embedding_type": "absolute",
-  "type_vocab_size": 2,
-  "vocab_size": 30522
-}
-
-[INFO|configuration_utils.py:431] 2020-12-21 06:11:03,714 >> loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.637c6035640bacb831febcc2b7f7bee0a96f9b30c2d7e9ef84082d9f252f3170
-[INFO|configuration_utils.py:467] 2020-12-21 06:11:03,716 >> Model config BertConfig {
-  "architectures": [
-    "BertForMaskedLM"
-  ],
-  "attention_probs_dropout_prob": 0.1,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 512,
-  "model_type": "bert",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 0,
-  "position_embedding_type": "absolute",
-  "type_vocab_size": 2,
-  "vocab_size": 30522
-}
-
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:11:04,235 >> loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/nbdy/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:11:04,236 >> loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/nbdy/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
-[INFO|modeling_utils.py:1024] 2020-12-21 06:11:04,513 >> loading weights file https://huggingface.co/bert-base-uncased/resolve/main/pytorch_model.bin from cache at /home/nbdy/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f
-[WARNING|modeling_utils.py:1132] 2020-12-21 06:11:11,265 >> Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias']
-- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-[INFO|modeling_utils.py:1149] 2020-12-21 06:11:11,265 >> All the weights of BertForMaskedLM were initialized from the model checkpoint at bert-base-uncased.
-If your task is similar to the task the model of the checkpoint was trained on, you can already use BertForMaskedLM for predictions without further training.
-[WARNING|tokenization_utils_base.py:3233] 2020-12-21 06:11:14,059 >> Token indices sequence length is longer than the specified maximum sequence length for this model (44451 > 512). Running this sequence through the model will result in indexing errors
-Loading cached processed dataset at /home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab/cache-80dd69c00c6aeb7b.arrow
-Loading cached processed dataset at /home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab/cache-ad8e0261094e7e17.arrow
-[INFO|trainer.py:388] 2020-12-21 06:11:14,141 >> The following columns in the training set don't have a corresponding argument in `BertForMaskedLM.forward` and have been ignored: special_tokens_mask.
-[INFO|trainer.py:703] 2020-12-21 06:11:14,147 >> ***** Running training *****
-[INFO|trainer.py:704] 2020-12-21 06:11:14,147 >>   Num examples = 132947
-[INFO|trainer.py:705] 2020-12-21 06:11:14,147 >>   Num Epochs = 3
-[INFO|trainer.py:706] 2020-12-21 06:11:14,147 >>   Instantaneous batch size per device = 8
-[INFO|trainer.py:707] 2020-12-21 06:11:14,147 >>   Total train batch size (w. parallel, distributed & accumulation) = 8
-[INFO|trainer.py:708] 2020-12-21 06:11:14,147 >>   Gradient Accumulation steps = 1
-[INFO|trainer.py:709] 2020-12-21 06:11:14,147 >>   Total optimization steps = 49857
-  0%|          | 0/49857 [00:00<?, ?it/s]Traceback (most recent call last):
-  File "run_mlm.py", line 391, in <module>
-    main()
-  File "run_mlm.py", line 361, in main
-    trainer.train(model_path=model_path)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 799, in train
-    tr_loss += self.training_step(model, inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 1139, in training_step
-    loss = self.compute_loss(model, inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 1163, in compute_loss
-    outputs = model(**inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 1185, in forward
-    return_dict=return_dict,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 872, in forward
-    return_dict=return_dict,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 507, in forward
-    output_attentions,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 447, in forward
-    self.feed_forward_chunk, self.chunk_size_feed_forward, self.seq_len_dim, attention_output
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/modeling_utils.py", line 1784, in apply_chunking_to_forward
-    return forward_fn(*input_tensors)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 453, in feed_forward_chunk
-    intermediate_output = self.intermediate(attention_output)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 381, in forward
-    hidden_states = self.intermediate_act_fn(hidden_states)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/functional.py", line 1383, in gelu
-    return torch._C._nn.gelu(input)
-RuntimeError: CUDA out of memory. Tried to allocate 48.00 MiB (GPU 0; 5.80 GiB total capacity; 4.85 GiB already allocated; 13.75 MiB free; 4.89 GiB reserved in total by PyTorch)
-  0%|          | 0/49857 [00:00<?, ?it/s]12/21/2020 06:11:48 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
-12/21/2020 06:11:48 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(output_dir='../models/pre_trained/model/', overwrite_output_dir=False, do_train=True, do_eval=False, do_predict=False, model_parallel=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=8, per_device_eval_batch_size=8, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_steps=0, logging_dir='runs/Dec21_06-11-48_powerserver', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='../models/pre_trained/model/', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None, ignore_data_skip=False, fp16_backend='auto', sharded_ddp=False)
-Using custom data configuration default
-Reusing dataset text (/home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab)
-[INFO|configuration_utils.py:431] 2020-12-21 06:11:48,955 >> loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.637c6035640bacb831febcc2b7f7bee0a96f9b30c2d7e9ef84082d9f252f3170
-[INFO|configuration_utils.py:467] 2020-12-21 06:11:48,956 >> Model config BertConfig {
-  "architectures": [
-    "BertForMaskedLM"
-  ],
-  "attention_probs_dropout_prob": 0.1,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 512,
-  "model_type": "bert",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 0,
-  "position_embedding_type": "absolute",
-  "type_vocab_size": 2,
-  "vocab_size": 30522
-}
-
-[INFO|configuration_utils.py:431] 2020-12-21 06:11:49,212 >> loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.637c6035640bacb831febcc2b7f7bee0a96f9b30c2d7e9ef84082d9f252f3170
-[INFO|configuration_utils.py:467] 2020-12-21 06:11:49,214 >> Model config BertConfig {
-  "architectures": [
-    "BertForMaskedLM"
-  ],
-  "attention_probs_dropout_prob": 0.1,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 512,
-  "model_type": "bert",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 0,
-  "position_embedding_type": "absolute",
-  "type_vocab_size": 2,
-  "vocab_size": 30522
-}
-
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:11:49,736 >> loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/nbdy/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:11:49,737 >> loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/nbdy/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
-[INFO|modeling_utils.py:1024] 2020-12-21 06:11:50,017 >> loading weights file https://huggingface.co/bert-base-uncased/resolve/main/pytorch_model.bin from cache at /home/nbdy/.cache/huggingface/transformers/a8041bf617d7f94ea26d15e218abd04afc2004805632abc0ed2066aa16d50d04.faf6ea826ae9c5867d12b22257f9877e6b8367890837bd60f7c54a29633f7f2f
-[WARNING|modeling_utils.py:1132] 2020-12-21 06:11:56,579 >> Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias']
-- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-[INFO|modeling_utils.py:1149] 2020-12-21 06:11:56,579 >> All the weights of BertForMaskedLM were initialized from the model checkpoint at bert-base-uncased.
-If your task is similar to the task the model of the checkpoint was trained on, you can already use BertForMaskedLM for predictions without further training.
-[WARNING|tokenization_utils_base.py:3233] 2020-12-21 06:11:59,387 >> Token indices sequence length is longer than the specified maximum sequence length for this model (44451 > 512). Running this sequence through the model will result in indexing errors
-Loading cached processed dataset at /home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab/cache-80dd69c00c6aeb7b.arrow
-Loading cached processed dataset at /home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab/cache-ad8e0261094e7e17.arrow
-[INFO|trainer.py:388] 2020-12-21 06:11:59,471 >> The following columns in the training set don't have a corresponding argument in `BertForMaskedLM.forward` and have been ignored: special_tokens_mask.
-[INFO|trainer.py:703] 2020-12-21 06:11:59,476 >> ***** Running training *****
-[INFO|trainer.py:704] 2020-12-21 06:11:59,476 >>   Num examples = 132947
-[INFO|trainer.py:705] 2020-12-21 06:11:59,476 >>   Num Epochs = 3
-[INFO|trainer.py:706] 2020-12-21 06:11:59,476 >>   Instantaneous batch size per device = 8
-[INFO|trainer.py:707] 2020-12-21 06:11:59,476 >>   Total train batch size (w. parallel, distributed & accumulation) = 8
-[INFO|trainer.py:708] 2020-12-21 06:11:59,476 >>   Gradient Accumulation steps = 1
-[INFO|trainer.py:709] 2020-12-21 06:11:59,476 >>   Total optimization steps = 49857
-  0%|          | 0/49857 [00:00<?, ?it/s]Traceback (most recent call last):
-  File "run_mlm.py", line 391, in <module>
-    main()
-  File "run_mlm.py", line 361, in main
-    trainer.train(model_path=model_path)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 799, in train
-    tr_loss += self.training_step(model, inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 1139, in training_step
-    loss = self.compute_loss(model, inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 1163, in compute_loss
-    outputs = model(**inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 1185, in forward
-    return_dict=return_dict,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 872, in forward
-    return_dict=return_dict,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 507, in forward
-    output_attentions,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 447, in forward
-    self.feed_forward_chunk, self.chunk_size_feed_forward, self.seq_len_dim, attention_output
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/modeling_utils.py", line 1784, in apply_chunking_to_forward
-    return forward_fn(*input_tensors)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 453, in feed_forward_chunk
-    intermediate_output = self.intermediate(attention_output)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/bert/modeling_bert.py", line 381, in forward
-    hidden_states = self.intermediate_act_fn(hidden_states)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/functional.py", line 1383, in gelu
-    return torch._C._nn.gelu(input)
-RuntimeError: CUDA out of memory. Tried to allocate 48.00 MiB (GPU 0; 5.80 GiB total capacity; 4.85 GiB already allocated; 13.75 MiB free; 4.89 GiB reserved in total by PyTorch)
-  0%|          | 0/49857 [00:00<?, ?it/s]12/21/2020 06:13:58 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
-12/21/2020 06:13:58 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(output_dir='../models/pre_trained/model/', overwrite_output_dir=False, do_train=True, do_eval=False, do_predict=False, model_parallel=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=8, per_device_eval_batch_size=8, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_steps=0, logging_dir='runs/Dec21_06-13-58_powerserver', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='../models/pre_trained/model/', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None, ignore_data_skip=False, fp16_backend='auto', sharded_ddp=False)
-Using custom data configuration default
-Reusing dataset text (/home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab)
-12/21/2020 06:14:00 - INFO - filelock -   Lock 140050523635216 acquired on /home/nbdy/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985.lock
-[INFO|file_utils.py:1301] 2020-12-21 06:14:00,088 >> https://huggingface.co/t5-small/resolve/main/config.json not found in cache or force_download set to True, downloading to /home/nbdy/.cache/huggingface/transformers/tmpy2xukfj3
-Downloading:   0%|          | 0.00/1.20k [00:00<?, ?B/s]Downloading: 100%|██████████| 1.20k/1.20k [00:00<00:00, 688kB/s]
-[INFO|file_utils.py:1305] 2020-12-21 06:14:00,346 >> storing https://huggingface.co/t5-small/resolve/main/config.json in cache at /home/nbdy/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
-[INFO|file_utils.py:1308] 2020-12-21 06:14:00,347 >> creating metadata file for /home/nbdy/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
-12/21/2020 06:14:00 - INFO - filelock -   Lock 140050523635216 released on /home/nbdy/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985.lock
-[INFO|configuration_utils.py:431] 2020-12-21 06:14:00,347 >> loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
-[INFO|configuration_utils.py:467] 2020-12-21 06:14:00,349 >> Model config T5Config {
-  "architectures": [
-    "T5WithLMHeadModel"
-  ],
-  "d_ff": 2048,
-  "d_kv": 64,
-  "d_model": 512,
-  "decoder_start_token_id": 0,
-  "dropout_rate": 0.1,
-  "eos_token_id": 1,
-  "feed_forward_proj": "relu",
-  "initializer_factor": 1.0,
-  "is_encoder_decoder": true,
-  "layer_norm_epsilon": 1e-06,
-  "model_type": "t5",
-  "n_positions": 512,
-  "num_decoder_layers": 6,
-  "num_heads": 8,
-  "num_layers": 6,
-  "output_past": true,
-  "pad_token_id": 0,
-  "relative_attention_num_buckets": 32,
-  "task_specific_params": {
-    "summarization": {
-      "early_stopping": true,
-      "length_penalty": 2.0,
-      "max_length": 200,
-      "min_length": 30,
-      "no_repeat_ngram_size": 3,
-      "num_beams": 4,
-      "prefix": "summarize: "
-    },
-    "translation_en_to_de": {
-      "early_stopping": true,
-      "max_length": 300,
-      "num_beams": 4,
-      "prefix": "translate English to German: "
-    },
-    "translation_en_to_fr": {
-      "early_stopping": true,
-      "max_length": 300,
-      "num_beams": 4,
-      "prefix": "translate English to French: "
-    },
-    "translation_en_to_ro": {
-      "early_stopping": true,
-      "max_length": 300,
-      "num_beams": 4,
-      "prefix": "translate English to Romanian: "
-    }
-  },
-  "use_cache": true,
-  "vocab_size": 32128
-}
-
-[INFO|configuration_utils.py:431] 2020-12-21 06:14:00,595 >> loading configuration file https://huggingface.co/t5-small/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/fe501e8fd6425b8ec93df37767fcce78ce626e34cc5edc859c662350cf712e41.406701565c0afd9899544c1cb8b93185a76f00b31e5ce7f6e18bbaef02241985
-[INFO|configuration_utils.py:467] 2020-12-21 06:14:00,596 >> Model config T5Config {
-  "architectures": [
-    "T5WithLMHeadModel"
-  ],
-  "d_ff": 2048,
-  "d_kv": 64,
-  "d_model": 512,
-  "decoder_start_token_id": 0,
-  "dropout_rate": 0.1,
-  "eos_token_id": 1,
-  "feed_forward_proj": "relu",
-  "initializer_factor": 1.0,
-  "is_encoder_decoder": true,
-  "layer_norm_epsilon": 1e-06,
-  "model_type": "t5",
-  "n_positions": 512,
-  "num_decoder_layers": 6,
-  "num_heads": 8,
-  "num_layers": 6,
-  "output_past": true,
-  "pad_token_id": 0,
-  "relative_attention_num_buckets": 32,
-  "task_specific_params": {
-    "summarization": {
-      "early_stopping": true,
-      "length_penalty": 2.0,
-      "max_length": 200,
-      "min_length": 30,
-      "no_repeat_ngram_size": 3,
-      "num_beams": 4,
-      "prefix": "summarize: "
-    },
-    "translation_en_to_de": {
-      "early_stopping": true,
-      "max_length": 300,
-      "num_beams": 4,
-      "prefix": "translate English to German: "
-    },
-    "translation_en_to_fr": {
-      "early_stopping": true,
-      "max_length": 300,
-      "num_beams": 4,
-      "prefix": "translate English to French: "
-    },
-    "translation_en_to_ro": {
-      "early_stopping": true,
-      "max_length": 300,
-      "num_beams": 4,
-      "prefix": "translate English to Romanian: "
-    }
-  },
-  "use_cache": true,
-  "vocab_size": 32128
-}
-
-12/21/2020 06:14:00 - INFO - filelock -   Lock 140050683396304 acquired on /home/nbdy/.cache/huggingface/transformers/65fc04e21f45f61430aea0c4fedffac16a4d20d78b8e6601d8d996ebefefecd2.3b69006860e7b5d0a63ffdddc01ddcd6b7c318a6f4fd793596552c741734c62d.lock
-[INFO|file_utils.py:1301] 2020-12-21 06:14:00,846 >> https://huggingface.co/t5-small/resolve/main/spiece.model not found in cache or force_download set to True, downloading to /home/nbdy/.cache/huggingface/transformers/tmpa8stmvcg
-Downloading:   0%|          | 0.00/792k [00:00<?, ?B/s]Downloading:   5%|▍         | 36.9k/792k [00:00<00:03, 251kB/s]Downloading:  24%|██▍       | 193k/792k [00:00<00:01, 330kB/s] Downloading:  52%|█████▏    | 414k/792k [00:00<00:00, 442kB/s]Downloading: 100%|██████████| 792k/792k [00:00<00:00, 1.88MB/s]
-[INFO|file_utils.py:1305] 2020-12-21 06:14:01,525 >> storing https://huggingface.co/t5-small/resolve/main/spiece.model in cache at /home/nbdy/.cache/huggingface/transformers/65fc04e21f45f61430aea0c4fedffac16a4d20d78b8e6601d8d996ebefefecd2.3b69006860e7b5d0a63ffdddc01ddcd6b7c318a6f4fd793596552c741734c62d
-[INFO|file_utils.py:1308] 2020-12-21 06:14:01,525 >> creating metadata file for /home/nbdy/.cache/huggingface/transformers/65fc04e21f45f61430aea0c4fedffac16a4d20d78b8e6601d8d996ebefefecd2.3b69006860e7b5d0a63ffdddc01ddcd6b7c318a6f4fd793596552c741734c62d
-12/21/2020 06:14:01 - INFO - filelock -   Lock 140050683396304 released on /home/nbdy/.cache/huggingface/transformers/65fc04e21f45f61430aea0c4fedffac16a4d20d78b8e6601d8d996ebefefecd2.3b69006860e7b5d0a63ffdddc01ddcd6b7c318a6f4fd793596552c741734c62d.lock
-12/21/2020 06:14:01 - INFO - filelock -   Lock 140050514399760 acquired on /home/nbdy/.cache/huggingface/transformers/06779097c78e12f47ef67ecb728810c2ae757ee0a9efe9390c6419783d99382d.8627f1bd5d270a9fd2e5a51c8bec3223896587cc3cfe13edeabb0992ab43c529.lock
-[INFO|file_utils.py:1301] 2020-12-21 06:14:01,791 >> https://huggingface.co/t5-small/resolve/main/tokenizer.json not found in cache or force_download set to True, downloading to /home/nbdy/.cache/huggingface/transformers/tmp66ocmgyz
-Downloading:   0%|          | 0.00/1.39M [00:00<?, ?B/s]Downloading:   3%|▎         | 36.9k/1.39M [00:00<00:05, 264kB/s]Downloading:  14%|█▍        | 193k/1.39M [00:00<00:03, 339kB/s] Downloading:  52%|█████▏    | 725k/1.39M [00:00<00:01, 467kB/s]Downloading: 100%|██████████| 1.39M/1.39M [00:00<00:00, 2.95MB/s]
-[INFO|file_utils.py:1305] 2020-12-21 06:14:02,531 >> storing https://huggingface.co/t5-small/resolve/main/tokenizer.json in cache at /home/nbdy/.cache/huggingface/transformers/06779097c78e12f47ef67ecb728810c2ae757ee0a9efe9390c6419783d99382d.8627f1bd5d270a9fd2e5a51c8bec3223896587cc3cfe13edeabb0992ab43c529
-[INFO|file_utils.py:1308] 2020-12-21 06:14:02,531 >> creating metadata file for /home/nbdy/.cache/huggingface/transformers/06779097c78e12f47ef67ecb728810c2ae757ee0a9efe9390c6419783d99382d.8627f1bd5d270a9fd2e5a51c8bec3223896587cc3cfe13edeabb0992ab43c529
-12/21/2020 06:14:02 - INFO - filelock -   Lock 140050514399760 released on /home/nbdy/.cache/huggingface/transformers/06779097c78e12f47ef67ecb728810c2ae757ee0a9efe9390c6419783d99382d.8627f1bd5d270a9fd2e5a51c8bec3223896587cc3cfe13edeabb0992ab43c529.lock
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:14:02,531 >> loading file https://huggingface.co/t5-small/resolve/main/spiece.model from cache at /home/nbdy/.cache/huggingface/transformers/65fc04e21f45f61430aea0c4fedffac16a4d20d78b8e6601d8d996ebefefecd2.3b69006860e7b5d0a63ffdddc01ddcd6b7c318a6f4fd793596552c741734c62d
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:14:02,531 >> loading file https://huggingface.co/t5-small/resolve/main/tokenizer.json from cache at /home/nbdy/.cache/huggingface/transformers/06779097c78e12f47ef67ecb728810c2ae757ee0a9efe9390c6419783d99382d.8627f1bd5d270a9fd2e5a51c8bec3223896587cc3cfe13edeabb0992ab43c529
-Traceback (most recent call last):
-  File "run_mlm.py", line 391, in <module>
-    main()
-  File "run_mlm.py", line 242, in main
-    cache_dir=model_args.cache_dir,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/auto/modeling_auto.py", line 1093, in from_pretrained
-    config.__class__, cls.__name__, ", ".join(c.__name__ for c in MODEL_FOR_MASKED_LM_MAPPING.keys())
-ValueError: Unrecognized configuration class <class 'transformers.models.t5.configuration_t5.T5Config'> for this kind of AutoModel: AutoModelForMaskedLM.
-Model type should be one of LayoutLMConfig, DistilBertConfig, AlbertConfig, BartConfig, CamembertConfig, XLMRobertaConfig, LongformerConfig, RobertaConfig, SqueezeBertConfig, BertConfig, MobileBertConfig, FlaubertConfig, XLMConfig, ElectraConfig, ReformerConfig, FunnelConfig, MPNetConfig, TapasConfig.
-12/21/2020 06:15:30 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
-12/21/2020 06:15:30 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(output_dir='../models/pre_trained/model/', overwrite_output_dir=False, do_train=True, do_eval=False, do_predict=False, model_parallel=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=8, per_device_eval_batch_size=8, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_steps=0, logging_dir='runs/Dec21_06-15-30_powerserver', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='../models/pre_trained/model/', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None, ignore_data_skip=False, fp16_backend='auto', sharded_ddp=False)
-Using custom data configuration default
-Reusing dataset text (/home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab)
-12/21/2020 06:15:31 - INFO - filelock -   Lock 140573707468752 acquired on /home/nbdy/.cache/huggingface/transformers/fc674cd6907b4c9e933cb42d67662436b89fa9540a1f40d7c919d0109289ad01.7d2e0efa5ca20cef4fb199382111e9d3ad96fd77b849e1d4bed13a66e1336f51.lock
-[INFO|file_utils.py:1301] 2020-12-21 06:15:31,135 >> https://huggingface.co/gpt2/resolve/main/config.json not found in cache or force_download set to True, downloading to /home/nbdy/.cache/huggingface/transformers/tmp4_oqv4lf
-Downloading:   0%|          | 0.00/665 [00:00<?, ?B/s]Downloading: 100%|██████████| 665/665 [00:00<00:00, 420kB/s]
-[INFO|file_utils.py:1305] 2020-12-21 06:15:31,393 >> storing https://huggingface.co/gpt2/resolve/main/config.json in cache at /home/nbdy/.cache/huggingface/transformers/fc674cd6907b4c9e933cb42d67662436b89fa9540a1f40d7c919d0109289ad01.7d2e0efa5ca20cef4fb199382111e9d3ad96fd77b849e1d4bed13a66e1336f51
-[INFO|file_utils.py:1308] 2020-12-21 06:15:31,393 >> creating metadata file for /home/nbdy/.cache/huggingface/transformers/fc674cd6907b4c9e933cb42d67662436b89fa9540a1f40d7c919d0109289ad01.7d2e0efa5ca20cef4fb199382111e9d3ad96fd77b849e1d4bed13a66e1336f51
-12/21/2020 06:15:31 - INFO - filelock -   Lock 140573707468752 released on /home/nbdy/.cache/huggingface/transformers/fc674cd6907b4c9e933cb42d67662436b89fa9540a1f40d7c919d0109289ad01.7d2e0efa5ca20cef4fb199382111e9d3ad96fd77b849e1d4bed13a66e1336f51.lock
-[INFO|configuration_utils.py:431] 2020-12-21 06:15:31,394 >> loading configuration file https://huggingface.co/gpt2/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/fc674cd6907b4c9e933cb42d67662436b89fa9540a1f40d7c919d0109289ad01.7d2e0efa5ca20cef4fb199382111e9d3ad96fd77b849e1d4bed13a66e1336f51
-[INFO|configuration_utils.py:467] 2020-12-21 06:15:31,396 >> Model config GPT2Config {
-  "activation_function": "gelu_new",
-  "architectures": [
-    "GPT2LMHeadModel"
-  ],
-  "attn_pdrop": 0.1,
-  "bos_token_id": 50256,
-  "embd_pdrop": 0.1,
-  "eos_token_id": 50256,
-  "gradient_checkpointing": false,
-  "initializer_range": 0.02,
-  "layer_norm_epsilon": 1e-05,
-  "model_type": "gpt2",
-  "n_ctx": 1024,
-  "n_embd": 768,
-  "n_head": 12,
-  "n_inner": null,
-  "n_layer": 12,
-  "n_positions": 1024,
-  "resid_pdrop": 0.1,
-  "summary_activation": null,
-  "summary_first_dropout": 0.1,
-  "summary_proj_to_labels": true,
-  "summary_type": "cls_index",
-  "summary_use_proj": true,
-  "task_specific_params": {
-    "text-generation": {
-      "do_sample": true,
-      "max_length": 50
-    }
-  },
-  "use_cache": true,
-  "vocab_size": 50257
-}
-
-[INFO|configuration_utils.py:431] 2020-12-21 06:15:31,652 >> loading configuration file https://huggingface.co/gpt2/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/fc674cd6907b4c9e933cb42d67662436b89fa9540a1f40d7c919d0109289ad01.7d2e0efa5ca20cef4fb199382111e9d3ad96fd77b849e1d4bed13a66e1336f51
-[INFO|configuration_utils.py:467] 2020-12-21 06:15:31,653 >> Model config GPT2Config {
-  "activation_function": "gelu_new",
-  "architectures": [
-    "GPT2LMHeadModel"
-  ],
-  "attn_pdrop": 0.1,
-  "bos_token_id": 50256,
-  "embd_pdrop": 0.1,
-  "eos_token_id": 50256,
-  "gradient_checkpointing": false,
-  "initializer_range": 0.02,
-  "layer_norm_epsilon": 1e-05,
-  "model_type": "gpt2",
-  "n_ctx": 1024,
-  "n_embd": 768,
-  "n_head": 12,
-  "n_inner": null,
-  "n_layer": 12,
-  "n_positions": 1024,
-  "resid_pdrop": 0.1,
-  "summary_activation": null,
-  "summary_first_dropout": 0.1,
-  "summary_proj_to_labels": true,
-  "summary_type": "cls_index",
-  "summary_use_proj": true,
-  "task_specific_params": {
-    "text-generation": {
-      "do_sample": true,
-      "max_length": 50
-    }
-  },
-  "use_cache": true,
-  "vocab_size": 50257
-}
-
-12/21/2020 06:15:31 - INFO - filelock -   Lock 140573707468752 acquired on /home/nbdy/.cache/huggingface/transformers/684fe667923972fb57f6b4dcb61a3c92763ad89882f3da5da9866baf14f2d60f.c7ed1f96aac49e745788faa77ba0a26a392643a50bb388b9c04ff469e555241f.lock
-[INFO|file_utils.py:1301] 2020-12-21 06:15:31,920 >> https://huggingface.co/gpt2/resolve/main/vocab.json not found in cache or force_download set to True, downloading to /home/nbdy/.cache/huggingface/transformers/tmpy233b3c3
-Downloading:   0%|          | 0.00/1.04M [00:00<?, ?B/s]Downloading:   4%|▎         | 36.9k/1.04M [00:00<00:03, 253kB/s]Downloading:  19%|█▉        | 201k/1.04M [00:00<00:02, 327kB/s] Downloading:  74%|███████▍  | 770k/1.04M [00:00<00:00, 456kB/s]Downloading: 100%|██████████| 1.04M/1.04M [00:00<00:00, 2.23MB/s]
-[INFO|file_utils.py:1305] 2020-12-21 06:15:32,650 >> storing https://huggingface.co/gpt2/resolve/main/vocab.json in cache at /home/nbdy/.cache/huggingface/transformers/684fe667923972fb57f6b4dcb61a3c92763ad89882f3da5da9866baf14f2d60f.c7ed1f96aac49e745788faa77ba0a26a392643a50bb388b9c04ff469e555241f
-[INFO|file_utils.py:1308] 2020-12-21 06:15:32,651 >> creating metadata file for /home/nbdy/.cache/huggingface/transformers/684fe667923972fb57f6b4dcb61a3c92763ad89882f3da5da9866baf14f2d60f.c7ed1f96aac49e745788faa77ba0a26a392643a50bb388b9c04ff469e555241f
-12/21/2020 06:15:32 - INFO - filelock -   Lock 140573707468752 released on /home/nbdy/.cache/huggingface/transformers/684fe667923972fb57f6b4dcb61a3c92763ad89882f3da5da9866baf14f2d60f.c7ed1f96aac49e745788faa77ba0a26a392643a50bb388b9c04ff469e555241f.lock
-12/21/2020 06:15:32 - INFO - filelock -   Lock 140573707558096 acquired on /home/nbdy/.cache/huggingface/transformers/c0c761a63004025aeadd530c4c27b860ec4ecbe8a00531233de21d865a402598.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b.lock
-[INFO|file_utils.py:1301] 2020-12-21 06:15:32,908 >> https://huggingface.co/gpt2/resolve/main/merges.txt not found in cache or force_download set to True, downloading to /home/nbdy/.cache/huggingface/transformers/tmpd_2yasdx
-Downloading:   0%|          | 0.00/456k [00:00<?, ?B/s]Downloading:   8%|▊         | 36.9k/456k [00:00<00:01, 246kB/s]Downloading:  42%|████▏     | 193k/456k [00:00<00:00, 325kB/s] Downloading:  92%|█████████▏| 422k/456k [00:00<00:00, 436kB/s]Downloading: 100%|██████████| 456k/456k [00:00<00:00, 1.19MB/s]
-[INFO|file_utils.py:1305] 2020-12-21 06:15:33,553 >> storing https://huggingface.co/gpt2/resolve/main/merges.txt in cache at /home/nbdy/.cache/huggingface/transformers/c0c761a63004025aeadd530c4c27b860ec4ecbe8a00531233de21d865a402598.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
-[INFO|file_utils.py:1308] 2020-12-21 06:15:33,553 >> creating metadata file for /home/nbdy/.cache/huggingface/transformers/c0c761a63004025aeadd530c4c27b860ec4ecbe8a00531233de21d865a402598.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
-12/21/2020 06:15:33 - INFO - filelock -   Lock 140573707558096 released on /home/nbdy/.cache/huggingface/transformers/c0c761a63004025aeadd530c4c27b860ec4ecbe8a00531233de21d865a402598.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b.lock
-12/21/2020 06:15:33 - INFO - filelock -   Lock 140573707574032 acquired on /home/nbdy/.cache/huggingface/transformers/16a2f78023c8dc511294f0c97b5e10fde3ef9889ad6d11ffaa2a00714e73926e.cf2d0ecb83b6df91b3dbb53f1d1e4c311578bfd3aa0e04934215a49bf9898df0.lock
-[INFO|file_utils.py:1301] 2020-12-21 06:15:33,822 >> https://huggingface.co/gpt2/resolve/main/tokenizer.json not found in cache or force_download set to True, downloading to /home/nbdy/.cache/huggingface/transformers/tmp9hfa6krm
-Downloading:   0%|          | 0.00/1.36M [00:00<?, ?B/s]Downloading:   3%|▎         | 36.9k/1.36M [00:00<00:05, 263kB/s]Downloading:  14%|█▍        | 193k/1.36M [00:00<00:03, 342kB/s] Downloading:  37%|███▋      | 497k/1.36M [00:00<00:01, 466kB/s]Downloading: 100%|██████████| 1.36M/1.36M [00:00<00:00, 2.89MB/s]
-[INFO|file_utils.py:1305] 2020-12-21 06:15:34,559 >> storing https://huggingface.co/gpt2/resolve/main/tokenizer.json in cache at /home/nbdy/.cache/huggingface/transformers/16a2f78023c8dc511294f0c97b5e10fde3ef9889ad6d11ffaa2a00714e73926e.cf2d0ecb83b6df91b3dbb53f1d1e4c311578bfd3aa0e04934215a49bf9898df0
-[INFO|file_utils.py:1308] 2020-12-21 06:15:34,559 >> creating metadata file for /home/nbdy/.cache/huggingface/transformers/16a2f78023c8dc511294f0c97b5e10fde3ef9889ad6d11ffaa2a00714e73926e.cf2d0ecb83b6df91b3dbb53f1d1e4c311578bfd3aa0e04934215a49bf9898df0
-12/21/2020 06:15:34 - INFO - filelock -   Lock 140573707574032 released on /home/nbdy/.cache/huggingface/transformers/16a2f78023c8dc511294f0c97b5e10fde3ef9889ad6d11ffaa2a00714e73926e.cf2d0ecb83b6df91b3dbb53f1d1e4c311578bfd3aa0e04934215a49bf9898df0.lock
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:15:34,559 >> loading file https://huggingface.co/gpt2/resolve/main/vocab.json from cache at /home/nbdy/.cache/huggingface/transformers/684fe667923972fb57f6b4dcb61a3c92763ad89882f3da5da9866baf14f2d60f.c7ed1f96aac49e745788faa77ba0a26a392643a50bb388b9c04ff469e555241f
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:15:34,559 >> loading file https://huggingface.co/gpt2/resolve/main/merges.txt from cache at /home/nbdy/.cache/huggingface/transformers/c0c761a63004025aeadd530c4c27b860ec4ecbe8a00531233de21d865a402598.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:15:34,559 >> loading file https://huggingface.co/gpt2/resolve/main/tokenizer.json from cache at /home/nbdy/.cache/huggingface/transformers/16a2f78023c8dc511294f0c97b5e10fde3ef9889ad6d11ffaa2a00714e73926e.cf2d0ecb83b6df91b3dbb53f1d1e4c311578bfd3aa0e04934215a49bf9898df0
-Traceback (most recent call last):
-  File "run_mlm.py", line 391, in <module>
-    main()
-  File "run_mlm.py", line 242, in main
-    cache_dir=model_args.cache_dir,
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/models/auto/modeling_auto.py", line 1093, in from_pretrained
-    config.__class__, cls.__name__, ", ".join(c.__name__ for c in MODEL_FOR_MASKED_LM_MAPPING.keys())
-ValueError: Unrecognized configuration class <class 'transformers.models.gpt2.configuration_gpt2.GPT2Config'> for this kind of AutoModel: AutoModelForMaskedLM.
-Model type should be one of LayoutLMConfig, DistilBertConfig, AlbertConfig, BartConfig, CamembertConfig, XLMRobertaConfig, LongformerConfig, RobertaConfig, SqueezeBertConfig, BertConfig, MobileBertConfig, FlaubertConfig, XLMConfig, ElectraConfig, ReformerConfig, FunnelConfig, MPNetConfig, TapasConfig.
-12/21/2020 06:16:14 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
-12/21/2020 06:16:14 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(output_dir='../models/pre_trained/model/', overwrite_output_dir=False, do_train=True, do_eval=False, do_predict=False, model_parallel=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=8, per_device_eval_batch_size=8, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_steps=0, logging_dir='runs/Dec21_06-16-14_powerserver', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='../models/pre_trained/model/', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None, ignore_data_skip=False, fp16_backend='auto', sharded_ddp=False)
-Using custom data configuration default
-Reusing dataset text (/home/nbdy/.cache/huggingface/datasets/text/default-13b116dec97f9538/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab)
-12/21/2020 06:16:15 - INFO - filelock -   Lock 140209966903184 acquired on /home/nbdy/.cache/huggingface/transformers/1f06a2dd1198bb76f7700fb1d8d6b171d2d20ffafb0f41ae8dc9fac2469dd669.24b467112b4458b3d9e11dbad686b2aef8d2d0f53781cb44b366013ea0ad4a94.lock
-[INFO|file_utils.py:1301] 2020-12-21 06:16:15,245 >> https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/config.json not found in cache or force_download set to True, downloading to /home/nbdy/.cache/huggingface/transformers/tmplstjvzf6
-Downloading:   0%|          | 0.00/1.49k [00:00<?, ?B/s]Downloading: 100%|██████████| 1.49k/1.49k [00:00<00:00, 830kB/s]
-[INFO|file_utils.py:1305] 2020-12-21 06:16:15,506 >> storing https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/config.json in cache at /home/nbdy/.cache/huggingface/transformers/1f06a2dd1198bb76f7700fb1d8d6b171d2d20ffafb0f41ae8dc9fac2469dd669.24b467112b4458b3d9e11dbad686b2aef8d2d0f53781cb44b366013ea0ad4a94
-[INFO|file_utils.py:1308] 2020-12-21 06:16:15,507 >> creating metadata file for /home/nbdy/.cache/huggingface/transformers/1f06a2dd1198bb76f7700fb1d8d6b171d2d20ffafb0f41ae8dc9fac2469dd669.24b467112b4458b3d9e11dbad686b2aef8d2d0f53781cb44b366013ea0ad4a94
-12/21/2020 06:16:15 - INFO - filelock -   Lock 140209966903184 released on /home/nbdy/.cache/huggingface/transformers/1f06a2dd1198bb76f7700fb1d8d6b171d2d20ffafb0f41ae8dc9fac2469dd669.24b467112b4458b3d9e11dbad686b2aef8d2d0f53781cb44b366013ea0ad4a94.lock
-[INFO|configuration_utils.py:431] 2020-12-21 06:16:15,508 >> loading configuration file https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/1f06a2dd1198bb76f7700fb1d8d6b171d2d20ffafb0f41ae8dc9fac2469dd669.24b467112b4458b3d9e11dbad686b2aef8d2d0f53781cb44b366013ea0ad4a94
-[INFO|configuration_utils.py:467] 2020-12-21 06:16:15,509 >> Model config FlaubertConfig {
-  "amp": 1,
-  "architectures": [
-    "FlaubertWithLMHeadModel"
-  ],
-  "asm": false,
-  "attention_dropout": 0.1,
-  "bos_index": 0,
-  "bos_token_id": 0,
-  "bptt": 512,
-  "causal": false,
-  "clip_grad_norm": 5,
-  "dropout": 0.1,
-  "emb_dim": 512,
-  "embed_init_std": 0.02209708691207961,
-  "encoder_only": true,
-  "end_n_top": 5,
-  "eos_index": 1,
-  "fp16": true,
-  "gelu_activation": true,
-  "group_by_size": true,
-  "id2lang": {
-    "0": "fr"
-  },
-  "init_std": 0.02,
-  "is_encoder": true,
-  "lang2id": {
-    "fr": 0
-  },
-  "lang_id": 0,
-  "langs": [
-    "fr"
-  ],
-  "layer_norm_eps": 1e-06,
-  "layerdrop": 0.2,
-  "lg_sampling_factor": -1,
-  "lgs": "fr",
-  "mask_index": 5,
-  "mask_token_id": 0,
-  "max_batch_size": 0,
-  "max_position_embeddings": 512,
-  "max_vocab": -1,
-  "mlm_steps": [
-    [
-      "fr",
-      null
-    ]
-  ],
-  "model_type": "flaubert",
-  "n_heads": 8,
-  "n_langs": 1,
-  "n_layers": 6,
-  "pad_index": 2,
-  "pad_token_id": 2,
-  "pre_norm": true,
-  "sample_alpha": 0,
-  "share_inout_emb": true,
-  "sinusoidal_embeddings": false,
-  "start_n_top": 5,
-  "summary_activation": null,
-  "summary_first_dropout": 0.1,
-  "summary_proj_to_labels": true,
-  "summary_type": "first",
-  "summary_use_proj": true,
-  "tokens_per_batch": -1,
-  "unk_index": 3,
-  "use_lang_emb": true,
-  "vocab_size": 68729,
-  "word_blank": 0,
-  "word_dropout": 0,
-  "word_keep": 0.1,
-  "word_mask": 0.8,
-  "word_mask_keep_rand": "0.8,0.1,0.1",
-  "word_pred": 0.15,
-  "word_rand": 0.1,
-  "word_shuffle": 0
-}
-
-[INFO|configuration_utils.py:431] 2020-12-21 06:16:15,764 >> loading configuration file https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/config.json from cache at /home/nbdy/.cache/huggingface/transformers/1f06a2dd1198bb76f7700fb1d8d6b171d2d20ffafb0f41ae8dc9fac2469dd669.24b467112b4458b3d9e11dbad686b2aef8d2d0f53781cb44b366013ea0ad4a94
-[INFO|configuration_utils.py:467] 2020-12-21 06:16:15,766 >> Model config FlaubertConfig {
-  "amp": 1,
-  "architectures": [
-    "FlaubertWithLMHeadModel"
-  ],
-  "asm": false,
-  "attention_dropout": 0.1,
-  "bos_index": 0,
-  "bos_token_id": 0,
-  "bptt": 512,
-  "causal": false,
-  "clip_grad_norm": 5,
-  "dropout": 0.1,
-  "emb_dim": 512,
-  "embed_init_std": 0.02209708691207961,
-  "encoder_only": true,
-  "end_n_top": 5,
-  "eos_index": 1,
-  "fp16": true,
-  "gelu_activation": true,
-  "group_by_size": true,
-  "id2lang": {
-    "0": "fr"
-  },
-  "init_std": 0.02,
-  "is_encoder": true,
-  "lang2id": {
-    "fr": 0
-  },
-  "lang_id": 0,
-  "langs": [
-    "fr"
-  ],
-  "layer_norm_eps": 1e-06,
-  "layerdrop": 0.2,
-  "lg_sampling_factor": -1,
-  "lgs": "fr",
-  "mask_index": 5,
-  "mask_token_id": 0,
-  "max_batch_size": 0,
-  "max_position_embeddings": 512,
-  "max_vocab": -1,
-  "mlm_steps": [
-    [
-      "fr",
-      null
-    ]
-  ],
-  "model_type": "flaubert",
-  "n_heads": 8,
-  "n_langs": 1,
-  "n_layers": 6,
-  "pad_index": 2,
-  "pad_token_id": 2,
-  "pre_norm": true,
-  "sample_alpha": 0,
-  "share_inout_emb": true,
-  "sinusoidal_embeddings": false,
-  "start_n_top": 5,
-  "summary_activation": null,
-  "summary_first_dropout": 0.1,
-  "summary_proj_to_labels": true,
-  "summary_type": "first",
-  "summary_use_proj": true,
-  "tokens_per_batch": -1,
-  "unk_index": 3,
-  "use_lang_emb": true,
-  "vocab_size": 68729,
-  "word_blank": 0,
-  "word_dropout": 0,
-  "word_keep": 0.1,
-  "word_mask": 0.8,
-  "word_mask_keep_rand": "0.8,0.1,0.1",
-  "word_pred": 0.15,
-  "word_rand": 0.1,
-  "word_shuffle": 0
-}
-
-12/21/2020 06:16:16 - INFO - filelock -   Lock 140209976271248 acquired on /home/nbdy/.cache/huggingface/transformers/8e48c8308c42587bd3519c36387906ba98bb0a5639e9f6d2aa320802cf40fc23.1bf8182dcbc77a926e7aca7e5229a8d3813da2a5841244b9f358088faf411c59.lock
-[INFO|file_utils.py:1301] 2020-12-21 06:16:16,033 >> https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/vocab.json not found in cache or force_download set to True, downloading to /home/nbdy/.cache/huggingface/transformers/tmpmdwsvmy6
-Downloading:   0%|          | 0.00/1.56M [00:00<?, ?B/s]Downloading:   2%|▏         | 36.9k/1.56M [00:00<00:05, 264kB/s]Downloading:  12%|█▏        | 193k/1.56M [00:00<00:04, 339kB/s] Downloading:  51%|█████     | 795k/1.56M [00:00<00:01, 472kB/s]Downloading:  93%|█████████▎| 1.45M/1.56M [00:00<00:00, 645kB/s]Downloading: 100%|██████████| 1.56M/1.56M [00:00<00:00, 2.85MB/s]
-[INFO|file_utils.py:1305] 2020-12-21 06:16:16,847 >> storing https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/vocab.json in cache at /home/nbdy/.cache/huggingface/transformers/8e48c8308c42587bd3519c36387906ba98bb0a5639e9f6d2aa320802cf40fc23.1bf8182dcbc77a926e7aca7e5229a8d3813da2a5841244b9f358088faf411c59
-[INFO|file_utils.py:1308] 2020-12-21 06:16:16,848 >> creating metadata file for /home/nbdy/.cache/huggingface/transformers/8e48c8308c42587bd3519c36387906ba98bb0a5639e9f6d2aa320802cf40fc23.1bf8182dcbc77a926e7aca7e5229a8d3813da2a5841244b9f358088faf411c59
-12/21/2020 06:16:16 - INFO - filelock -   Lock 140209976271248 released on /home/nbdy/.cache/huggingface/transformers/8e48c8308c42587bd3519c36387906ba98bb0a5639e9f6d2aa320802cf40fc23.1bf8182dcbc77a926e7aca7e5229a8d3813da2a5841244b9f358088faf411c59.lock
-12/21/2020 06:16:17 - INFO - filelock -   Lock 140209976271248 acquired on /home/nbdy/.cache/huggingface/transformers/2f52697a151557f763b4bc984a33aeff05f2c115d7509c1d53eb436aa555816d.5a23e82e9ed3454c1a87fe4caf3681d0254d11a16bddc4059bc146257abb989b.lock
-[INFO|file_utils.py:1301] 2020-12-21 06:16:17,113 >> https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/merges.txt not found in cache or force_download set to True, downloading to /home/nbdy/.cache/huggingface/transformers/tmpsfu2xfx3
-Downloading:   0%|          | 0.00/896k [00:00<?, ?B/s]Downloading:   4%|▍         | 36.9k/896k [00:00<00:03, 254kB/s]Downloading:  21%|██        | 188k/896k [00:00<00:02, 332kB/s] Downloading:  44%|████▎     | 391k/896k [00:00<00:01, 443kB/s]Downloading: 100%|██████████| 896k/896k [00:00<00:00, 1.92MB/s]
-[INFO|file_utils.py:1305] 2020-12-21 06:16:17,845 >> storing https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/merges.txt in cache at /home/nbdy/.cache/huggingface/transformers/2f52697a151557f763b4bc984a33aeff05f2c115d7509c1d53eb436aa555816d.5a23e82e9ed3454c1a87fe4caf3681d0254d11a16bddc4059bc146257abb989b
-[INFO|file_utils.py:1308] 2020-12-21 06:16:17,845 >> creating metadata file for /home/nbdy/.cache/huggingface/transformers/2f52697a151557f763b4bc984a33aeff05f2c115d7509c1d53eb436aa555816d.5a23e82e9ed3454c1a87fe4caf3681d0254d11a16bddc4059bc146257abb989b
-12/21/2020 06:16:17 - INFO - filelock -   Lock 140209976271248 released on /home/nbdy/.cache/huggingface/transformers/2f52697a151557f763b4bc984a33aeff05f2c115d7509c1d53eb436aa555816d.5a23e82e9ed3454c1a87fe4caf3681d0254d11a16bddc4059bc146257abb989b.lock
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:16:17,845 >> loading file https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/vocab.json from cache at /home/nbdy/.cache/huggingface/transformers/8e48c8308c42587bd3519c36387906ba98bb0a5639e9f6d2aa320802cf40fc23.1bf8182dcbc77a926e7aca7e5229a8d3813da2a5841244b9f358088faf411c59
-[INFO|tokenization_utils_base.py:1802] 2020-12-21 06:16:17,845 >> loading file https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/merges.txt from cache at /home/nbdy/.cache/huggingface/transformers/2f52697a151557f763b4bc984a33aeff05f2c115d7509c1d53eb436aa555816d.5a23e82e9ed3454c1a87fe4caf3681d0254d11a16bddc4059bc146257abb989b
-12/21/2020 06:16:18 - INFO - filelock -   Lock 140209954938832 acquired on /home/nbdy/.cache/huggingface/transformers/cb6898c20cfcd18a381b36f7c6711c40ce4129bc8b84a07bb01679e9192f644b.3ed18e12c349afde0e4821e5ca98591471e9e33232892ed10d8a44051d24a472.lock
-[INFO|file_utils.py:1301] 2020-12-21 06:16:18,185 >> https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/pytorch_model.bin not found in cache or force_download set to True, downloading to /home/nbdy/.cache/huggingface/transformers/tmptcavqye2
-Downloading:   0%|          | 0.00/218M [00:00<?, ?B/s]Downloading:   0%|          | 34.8k/218M [00:00<13:01, 279kB/s]Downloading:   0%|          | 243k/218M [00:00<09:39, 375kB/s] Downloading:   0%|          | 729k/218M [00:00<06:58, 519kB/s]Downloading:   1%|          | 2.15M/218M [00:00<04:56, 728kB/s]Downloading:   2%|▏         | 4.07M/218M [00:00<03:28, 1.02MB/s]Downloading:   3%|▎         | 7.53M/218M [00:00<02:25, 1.44MB/s]Downloading:   5%|▌         | 11.2M/218M [00:00<01:41, 2.03MB/s]Downloading:   7%|▋         | 15.1M/218M [00:00<01:11, 2.83MB/s]Downloading:   9%|▊         | 18.9M/218M [00:00<00:50, 3.92MB/s]Downloading:  10%|█         | 22.8M/218M [00:01<00:36, 5.38MB/s]Downloading:  12%|█▏        | 26.8M/218M [00:01<00:26, 7.25MB/s]Downloading:  14%|█▍        | 30.7M/218M [00:01<00:19, 9.61MB/s]Downloading:  16%|█▌        | 34.6M/218M [00:01<00:14, 12.4MB/s]Downloading:  18%|█▊        | 38.6M/218M [00:01<00:11, 15.6MB/s]Downloading:  20%|█▉        | 42.5M/218M [00:01<00:09, 19.1MB/s]Downloading:  21%|██▏       | 46.4M/218M [00:01<00:07, 22.6MB/s]Downloading:  23%|██▎       | 50.4M/218M [00:01<00:06, 25.9MB/s]Downloading:  25%|██▍       | 54.3M/218M [00:01<00:05, 28.9MB/s]Downloading:  27%|██▋       | 58.2M/218M [00:01<00:05, 31.3MB/s]Downloading:  29%|██▊       | 62.1M/218M [00:02<00:04, 33.3MB/s]Downloading:  30%|███       | 66.1M/218M [00:02<00:04, 34.9MB/s]Downloading:  32%|███▏      | 70.0M/218M [00:02<00:04, 36.1MB/s]Downloading:  34%|███▍      | 73.9M/218M [00:02<00:03, 36.9MB/s]Downloading:  36%|███▌      | 77.9M/218M [00:02<00:03, 37.7MB/s]Downloading:  38%|███▊      | 81.8M/218M [00:02<00:03, 38.1MB/s]Downloading:  39%|███▉      | 85.7M/218M [00:02<00:03, 38.4MB/s]Downloading:  41%|████      | 89.6M/218M [00:02<00:03, 38.6MB/s]Downloading:  43%|████▎     | 93.8M/218M [00:02<00:03, 39.3MB/s]Downloading:  45%|████▍     | 97.9M/218M [00:02<00:02, 40.0MB/s]Downloading:  47%|████▋     | 102M/218M [00:03<00:02, 39.8MB/s] Downloading:  49%|████▊     | 106M/218M [00:03<00:02, 39.7MB/s]Downloading:  50%|█████     | 110M/218M [00:03<00:02, 39.5MB/s]Downloading:  52%|█████▏    | 114M/218M [00:03<00:02, 39.4MB/s]Downloading:  54%|█████▍    | 118M/218M [00:03<00:02, 39.4MB/s]Downloading:  56%|█████▌    | 122M/218M [00:03<00:02, 39.1MB/s]Downloading:  58%|█████▊    | 126M/218M [00:03<00:02, 39.4MB/s]Downloading:  60%|█████▉    | 130M/218M [00:03<00:02, 39.4MB/s]Downloading:  61%|██████▏   | 134M/218M [00:03<00:02, 39.5MB/s]Downloading:  63%|██████▎   | 138M/218M [00:03<00:02, 39.5MB/s]Downloading:  65%|██████▌   | 142M/218M [00:04<00:01, 39.4MB/s]Downloading:  67%|██████▋   | 146M/218M [00:04<00:01, 39.4MB/s]Downloading:  69%|██████▊   | 150M/218M [00:04<00:01, 39.4MB/s]Downloading:  70%|███████   | 153M/218M [00:04<00:01, 39.5MB/s]Downloading:  72%|███████▏  | 157M/218M [00:04<00:01, 39.3MB/s]Downloading:  74%|███████▍  | 161M/218M [00:04<00:01, 39.1MB/s]Downloading:  76%|███████▌  | 165M/218M [00:04<00:01, 39.2MB/s]Downloading:  78%|███████▊  | 169M/218M [00:04<00:01, 39.3MB/s]Downloading:  80%|███████▉  | 173M/218M [00:04<00:01, 39.3MB/s]Downloading:  81%|████████▏ | 177M/218M [00:04<00:01, 39.3MB/s]Downloading:  83%|████████▎ | 181M/218M [00:05<00:00, 39.3MB/s]Downloading:  85%|████████▌ | 185M/218M [00:05<00:00, 39.8MB/s]Downloading:  87%|████████▋ | 189M/218M [00:05<00:00, 40.4MB/s]Downloading:  89%|████████▉ | 194M/218M [00:05<00:00, 40.8MB/s]Downloading:  91%|█████████ | 198M/218M [00:05<00:00, 41.1MB/s]Downloading:  93%|█████████▎| 202M/218M [00:05<00:00, 41.3MB/s]Downloading:  95%|█████████▍| 206M/218M [00:05<00:00, 42.5MB/s]Downloading:  97%|█████████▋| 211M/218M [00:05<00:00, 43.8MB/s]Downloading:  99%|█████████▉| 216M/218M [00:05<00:00, 44.7MB/s]Downloading: 100%|██████████| 218M/218M [00:05<00:00, 36.9MB/s]
-[INFO|file_utils.py:1305] 2020-12-21 06:16:24,770 >> storing https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/pytorch_model.bin in cache at /home/nbdy/.cache/huggingface/transformers/cb6898c20cfcd18a381b36f7c6711c40ce4129bc8b84a07bb01679e9192f644b.3ed18e12c349afde0e4821e5ca98591471e9e33232892ed10d8a44051d24a472
-[INFO|file_utils.py:1308] 2020-12-21 06:16:24,770 >> creating metadata file for /home/nbdy/.cache/huggingface/transformers/cb6898c20cfcd18a381b36f7c6711c40ce4129bc8b84a07bb01679e9192f644b.3ed18e12c349afde0e4821e5ca98591471e9e33232892ed10d8a44051d24a472
-12/21/2020 06:16:24 - INFO - filelock -   Lock 140209954938832 released on /home/nbdy/.cache/huggingface/transformers/cb6898c20cfcd18a381b36f7c6711c40ce4129bc8b84a07bb01679e9192f644b.3ed18e12c349afde0e4821e5ca98591471e9e33232892ed10d8a44051d24a472.lock
-[INFO|modeling_utils.py:1024] 2020-12-21 06:16:24,770 >> loading weights file https://huggingface.co/flaubert/flaubert_small_cased/resolve/main/pytorch_model.bin from cache at /home/nbdy/.cache/huggingface/transformers/cb6898c20cfcd18a381b36f7c6711c40ce4129bc8b84a07bb01679e9192f644b.3ed18e12c349afde0e4821e5ca98591471e9e33232892ed10d8a44051d24a472
-[INFO|modeling_utils.py:1140] 2020-12-21 06:16:32,812 >> All model checkpoint weights were used when initializing FlaubertWithLMHeadModel.
-
-[WARNING|modeling_utils.py:1143] 2020-12-21 06:16:32,812 >> Some weights of FlaubertWithLMHeadModel were not initialized from the model checkpoint at flaubert/flaubert_small_cased and are newly initialized: ['transformer.position_ids']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-[WARNING|tokenization_utils_base.py:3233] 2020-12-21 06:16:36,171 >> Token indices sequence length is longer than the specified maximum sequence length for this model (54075 > 512). Running this sequence through the model will result in indexing errors
-  0%|          | 0/3 [00:00<?, ?ba/s] 33%|███▎      | 1/3 [05:24<10:48, 324.38s/ba] 67%|██████▋   | 2/3 [07:52<04:31, 271.62s/ba]100%|██████████| 3/3 [09:39<00:00, 222.00s/ba]100%|██████████| 3/3 [09:39<00:00, 193.03s/ba]
-  0%|          | 0/3 [00:00<?, ?ba/s] 33%|███▎      | 1/3 [12:41<25:23, 761.70s/ba] 67%|██████▋   | 2/3 [20:01<11:05, 665.19s/ba]100%|██████████| 3/3 [20:59<00:00, 483.10s/ba]100%|██████████| 3/3 [20:59<00:00, 419.98s/ba]
-[INFO|trainer.py:388] 2020-12-21 06:47:19,938 >> The following columns in the training set don't have a corresponding argument in `FlaubertWithLMHeadModel.forward` and have been ignored: special_tokens_mask.
-[INFO|trainer.py:703] 2020-12-21 06:47:19,942 >> ***** Running training *****
-[INFO|trainer.py:704] 2020-12-21 06:47:19,942 >>   Num examples = 162036
-[INFO|trainer.py:705] 2020-12-21 06:47:19,942 >>   Num Epochs = 3
-[INFO|trainer.py:706] 2020-12-21 06:47:19,942 >>   Instantaneous batch size per device = 8
-[INFO|trainer.py:707] 2020-12-21 06:47:19,942 >>   Total train batch size (w. parallel, distributed & accumulation) = 8
-[INFO|trainer.py:708] 2020-12-21 06:47:19,942 >>   Gradient Accumulation steps = 1
-[INFO|trainer.py:709] 2020-12-21 06:47:19,942 >>   Total optimization steps = 60765
-  0%|          | 0/60765 [00:00<?, ?it/s]/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/nn/_reduction.py:14: UserWarning: reduction='elementwise_mean' is deprecated, please use reduction='mean' instead.
-  warnings.warn("reduction='elementwise_mean' is deprecated, please use reduction='mean' instead.")
-Traceback (most recent call last):
-  File "run_mlm.py", line 391, in <module>
-    main()
-  File "run_mlm.py", line 361, in main
-    trainer.train(model_path=model_path)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 799, in train
-    tr_loss += self.training_step(model, inputs)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/transformers/trainer.py", line 1153, in training_step
-    loss.backward()
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/tensor.py", line 221, in backward
-    torch.autograd.backward(self, gradient, retain_graph, create_graph)
-  File "/home/nbdy/miniconda3/envs/recs/lib/python3.7/site-packages/torch/autograd/__init__.py", line 132, in backward
-    allow_unreachable=True)  # allow_unreachable flag
-RuntimeError: CUDA out of memory. Tried to allocate 1.05 GiB (GPU 0; 5.80 GiB total capacity; 3.98 GiB already allocated; 849.75 MiB free; 4.07 GiB reserved in total by PyTorch)
-  0%|          | 0/60765 [00:00<?, ?it/s]
