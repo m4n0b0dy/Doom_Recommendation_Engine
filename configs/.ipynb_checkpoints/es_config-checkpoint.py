@@ -1,5 +1,5 @@
 #es index name
-ES_INDEX_NAME = 'verse_index'
+ES_INDEX_NAME = 'production_index'
 
 #es index body
 INDEX_BODY = {
@@ -19,11 +19,18 @@ INDEX_BODY = {
          },
          "verse":{
             "type":"text"
-         }#,
-         #"verse_vector":{
-            #"type":"dense_vector",
-            #"dims":2
-         #}
+         },
+         "verse_vector":{
+            "type":"dense_vector",
+            "dims":2
+         },
+          #believe you can use the text type for arrays as well
+          "verse_topics":{
+            "type":"text"
+         },
+          "verse_entities":{
+            "type":"text"
+         },
       }
    }
 }

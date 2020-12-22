@@ -23,8 +23,10 @@ class Verse:
             'artist':artist,
             'album':album,
             'song':song,
-            'verse':self.text#,
-            #'verse_vector':[0,0]
+            'verse':self.text,
+            'verse_vector':[],
+            'verse_topics':[],
+            'verse_entities':[],
         }
         
     def clean_text(self):
@@ -33,6 +35,13 @@ class Verse:
             _text = re.sub(pattern, replacement, _text)
         self.text = _text.strip()
         self.es_dict['verse'] = self.text
+        
+    def verse_embedding(self):
+        pass
+    def verse_topics(self):
+        pass
+    def verse_ner(self):
+        pass
 
     def ingest_to_es(self,conn,index):
         return conn.index(index=index, body=self.es_dict)
