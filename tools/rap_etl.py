@@ -103,9 +103,14 @@ def verse_extract(json_path):
     print('Extracted',json_path,'in time:',time.time()-t)
     return full_verse_list                
 
+def save_success(name):
+    with open('success.txt','a') as f:
+        f.write(name+', ')
+
 def ingest_waterfall_json(json_paths,es_conn,es_index):
     for json_path in json_paths:
         load_artist_es(json_path, es_conn, es_index)
+        save_success(json_path)
 
 def ingest_multiple_json(json_paths,es_conn,es_index):
     pool = Pool(thread_count)
