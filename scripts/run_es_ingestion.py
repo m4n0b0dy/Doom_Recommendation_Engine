@@ -35,4 +35,5 @@ if __name__ == '__main__':
     data_repo = '../data/json_lyrics/'
     json_files = [data_repo+f for f in listdir(data_repo) if isfile(join(data_repo, f))]
     #json_files = json_files[:10]
+    
     ingest_multiple_json(json_files, es_conn, ES_INDEX_NAME)

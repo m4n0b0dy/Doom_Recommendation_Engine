@@ -3,6 +3,8 @@ import re
 from itertools import repeat
 import time
 
+from live_models import *
+
 import sys
 sys.path.insert(0, '../configs/')
 from es_config import *
@@ -35,13 +37,13 @@ class Verse:
             _text = re.sub(pattern, replacement, _text)
         self.text = _text.strip()
         self.es_dict['verse'] = self.text
+    
+    #not really best practice here but was simpler than the other method
+    def run_all_ml_models(self):
+        self.es_dict['verse_vector'] = run_embedding(self.text)
+        self.es_dict['verse_topics'] = run_lda(self.text)
+        self.es_dict['verse_entities'] = run_ner(self.text)
         
-    def verse_embedding(self):
-        pass
-    def verse_topics(self):
-        pass
-    def verse_ner(self):
-        pass
 
     def ingest_to_es(self,conn,index):
         return conn.index(index=index, body=self.es_dict)
@@ -65,6 +67,7 @@ def load_artist(json_path, es_conn, es_index):
                             album=album,
                             song=song)
                 verse.clean_text()
+                verse.run_all_ml_models()
                 verse.ingest_to_es(es_conn,
                                es_index)
                 cntr +=1

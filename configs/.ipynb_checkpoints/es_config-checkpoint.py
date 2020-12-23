@@ -22,7 +22,7 @@ INDEX_BODY = {
          },
          "verse_vector":{
             "type":"dense_vector",
-            "dims":2
+            "dims":1024
          },
           #believe you can use the text type for arrays as well
           "verse_topics":{
