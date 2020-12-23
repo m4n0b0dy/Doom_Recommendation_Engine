@@ -10,7 +10,7 @@ sys.path.insert(0, '../configs/')
 from es_config import *
 
 from multiprocessing.pool import ThreadPool as Pool
-thread_count = 500
+thread_count = 10
 
 class Verse:
     def __init__(self,
@@ -27,7 +27,7 @@ class Verse:
             'song':song,
             'verse':self.text,
             'verse_vector':[],
-            'verse_topics':[],
+            'verse_topics':'',
             'verse_entities':[],
         }
         
@@ -49,7 +49,7 @@ class Verse:
         return conn.index(index=index, body=self.es_dict)
     
     
-def load_artist(json_path, es_conn, es_index):
+def load_artist_es(json_path, es_conn, es_index):
     t = time.time()
     with open(json_path) as f:
         data = json.load(f)
@@ -66,8 +66,11 @@ def load_artist(json_path, es_conn, es_index):
                             artist=artist,
                             album=album,
                             song=song)
+                #clean verse for known bad texts
                 verse.clean_text()
+                #run ml models and set attributes
                 verse.run_all_ml_models()
+                #ingest to elastisearch
                 verse.ingest_to_es(es_conn,
                                es_index)
                 cntr +=1
@@ -99,9 +102,13 @@ def verse_extract(json_path):
                                        'verse':verse.text})
     print('Extracted',json_path,'in time:',time.time()-t)
     return full_verse_list                
-    
+
+def ingest_waterfall_json(json_paths,es_conn,es_index):
+    for json_path in json_paths:
+        load_artist_es(json_path, es_conn, es_index)
+
 def ingest_multiple_json(json_paths,es_conn,es_index):
     pool = Pool(thread_count)
-    pool.starmap(etl_artist, zip(json_paths, repeat(es_conn), repeat(es_index)))
+    pool.starmap(load_artist_es, zip(json_paths, repeat(es_conn), repeat(es_index)))
     pool.close()
     pool.join()

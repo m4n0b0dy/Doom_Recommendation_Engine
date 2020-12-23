@@ -14,6 +14,8 @@ from transformers import pipeline
 STEMMER = PorterStemmer()
 def stem_and_stop(verse):
     verse = remove_stopwords(verse)
+    if not verse:
+        return ['']
     verse = STEMMER.stem_sentence(verse)
     return simple_preprocess(verse)
 
@@ -46,7 +48,10 @@ def run_lda(string, topic_threshold=.5):
     vectorized = COUNT_VECTORIZER.transform([string])
     pred = LDA_MODEL.transform(vectorized)
     topics = sorted(list(zip(pred[0],ALL_TOPICS)),reverse=True)
-    return [_ for _ in topics if _[0]>=topic_threshold]
+    if topics[0][0]>=topic_threshold:
+        return ' + '.join(topics[0][1])
+    else:
+        return ''
 
 #NER model
 tokenizer = AutoTokenizer.from_pretrained("../models/bert_ner/tokenizer/")
