@@ -54,3 +54,5 @@ REGEX_PATTERNS["\'"]=''
 REGEX_PATTERNS['\\n']=' '
 REGEX_PATTERNS['&amp;']='and'
 REGEX_PATTERNS['  ']=' '
+
+ES_QUERY = {}
