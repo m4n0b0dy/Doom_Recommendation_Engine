@@ -1,31 +1,30 @@
-# Project Name
+# Lyrics Based Recommendation Engine
 
 ## Project Description
-An ML project template and framework to quickly plan, iterate, and deploy to production
+ML software for hip-hop recommendations from lyrical content without needing user data
 
 ## Project Status
-- [x] Research
-- [ ] Data Collection
-- [ ] Model Selection
-- [ ] Development
-- [ ] Tuning and Optimization
-- [ ] Deployment
-- [ ] Project Published
+- [x] Data scraped
+- [x] Run data through ETL (1.prepare for ES ingestion) and (2.make a DF with verse data for machine learning)
+- [x] Build and train Gensim Doc2Vec model
+- [x] Build and train Sklearn LDA model
+- [x] Build Huggingface Transformers NER model
+- [x] Add all 3 ML models for extraction and identification as part of ETL process
+- [x] Ingest verses and relevant artists into Elasticsearch cluster
+- [x] Develop templated ES query to leverage ML models in search with adjustable boosting (surprisingly hard)
+- [x] Write Flask API to connect to ES cluster, receive a verse and find similar verses based on embedding, topic extraction, and entity recognition models
+- [ ] Dockerize Flask API
 
 ## Project Tools
 - Python
   - Sklearn
-  - TensorFlow
-- GCP
-
-## Deplpoyment and Publication
-- [Project Name Deployed Here](keenanvenuti.com/projects)
-- [Project Name Published Here](keenanvenuti.com/projects)
-
-## Installation and Running
-```sh
-git clone git.repo.com
-```
-```sh
-python installation
-```
+  - Gensim
+  - Transformers (Huggingface)
+  - Flask
+  - BS4
+  - Json
+- Elasticsearch
+  - Cosine similarity
+  - Custom scoring calculation
+  - Adjustable Boosting
+- Docker
