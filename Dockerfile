@@ -1,19 +1,17 @@
-FROM python:3.7
+FROM ubuntu:18.04
 
-RUN pip install virtualenv
-ENV VIRTUAL_ENV=/venv
-RUN virtualenv venv -p python3
-ENV PATH="VIRTUAL_ENV/bin:$PATH"
+RUN apt-get update -y && \
+    apt-get install -y python3-pip python3.8
 
-WORKDIR /app
-ADD . /app
+COPY ./env/requirements.txt /requirements.txt
 
-# Install dependencies
-RUN cd env && pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
+
+COPY . /
 
 # Expose port 
 EXPOSE 5000
 
-# Run the application:
-ENTRYPOINT [ "python" ]
-CMD [ "deploy/app.py" ]
+ENTRYPOINT [ "python3" ]
+
+CMD ["deploy/app.py"]
