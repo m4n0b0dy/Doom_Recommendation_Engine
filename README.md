@@ -13,7 +13,7 @@ ML software for hip-hop recommendations from lyrical content without needing use
 - [x] Ingest verses and relevant artists into Elasticsearch cluster
 - [x] Develop templated ES query to leverage ML models in search with adjustable boosting (surprisingly hard)
 - [x] Write Flask API to connect to ES cluster, receive a verse and find similar verses based on embedding, topic extraction, and entity recognition models
-- [ ] Dockerize Flask API
+- [x] Dockerize Flask API
 
 ## Project Tools
 - Python
